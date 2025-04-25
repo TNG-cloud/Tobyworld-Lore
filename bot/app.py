@@ -15,5 +15,5 @@ app.add_handler(CommandHandler("ask", ask))
 app.add_handler(CommandHandler("poem", poem))
 
 if __name__ == "__main__":
-    print("✅ Telegram Bot running...")
+    print("✅ Telegram Bot running in Polling mode...")
     app.run_polling()
