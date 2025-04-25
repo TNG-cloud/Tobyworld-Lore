@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>All Lore (Top 500)</h2>
+<ul>
+  {% for lore in lore_data %}
+    <li>{{ lore }}</li>
+  {% endfor %}
+</ul>
+{% endblock %}
