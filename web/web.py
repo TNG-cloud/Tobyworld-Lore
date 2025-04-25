@@ -4,9 +4,9 @@ import random
 
 app = Flask(__name__)
 
-# 📥 正确读取 shared/Toadgod-tweets.txt
+# ✅ 强制以 utf-8 编码打开并自动跳过错误字符（防止 Render 报错）
 LORE_PATH = os.path.join(os.path.dirname(__file__), "..", "shared", "Toadgod-tweets.txt")
-with open(LORE_PATH, "r", encoding="utf-8") as f:
+with open(LORE_PATH, "r", encoding="utf-8", errors="replace") as f:
     lore_data = f.read().splitlines()
 
 @app.route("/")
