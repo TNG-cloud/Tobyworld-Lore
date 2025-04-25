@@ -1,10 +1,12 @@
 from flask import Flask, render_template, request
-import random
 import os
+import random
 
 app = Flask(__name__)
 
-with open(os.path.join("shared", "Toadgod-tweets.txt"), "r", encoding="utf-8") as f:
+# 📥 正确读取 shared/Toadgod-tweets.txt
+LORE_PATH = os.path.join(os.path.dirname(__file__), "..", "shared", "Toadgod-tweets.txt")
+with open(LORE_PATH, "r", encoding="utf-8") as f:
     lore_data = f.read().splitlines()
 
 @app.route("/")
@@ -17,8 +19,8 @@ def learn():
 
 @app.route("/random")
 def random_lore():
-    random_line = random.choice(lore_data)
-    return render_template("random.html", random_line=random_line)
+    line = random.choice(lore_data)
+    return render_template("random.html", random_line=line)
 
 @app.route("/search")
 def search():
@@ -30,8 +32,10 @@ def search():
 
 @app.route("/explore")
 def explore():
-    random_line = random.choice(lore_data)
-    return render_template("explore.html", lore=random_line)
+    line = random.choice(lore_data)
+    return render_template("explore.html", line=line)
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
+    port = int(os.environ.get("PORT", 5000))
+    print(f"✅ Lore Guardian Web running on port {port}")
+    app.run(host="0.0.0.0", port=port)
