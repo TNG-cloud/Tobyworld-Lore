@@ -4,7 +4,7 @@ import random
 
 app = Flask(__name__)
 
-# ✅ 强制以 utf-8 编码打开并自动跳过错误字符（防止 Render 报错）
+# 确保从项目根目录正确读取
 LORE_PATH = os.path.join(os.path.dirname(__file__), "..", "shared", "Toadgod-tweets.txt")
 with open(LORE_PATH, "r", encoding="utf-8", errors="replace") as f:
     lore_data = f.read().splitlines()
@@ -37,5 +37,5 @@ def explore():
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
-    print(f"✅ Lore Guardian Web running on port {port}")
+    print(f"✅ Web running on port {port}")
     app.run(host="0.0.0.0", port=port)
