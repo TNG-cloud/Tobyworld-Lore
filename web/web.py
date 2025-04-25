@@ -23,13 +23,10 @@ def random_lore():
 @app.route("/search")
 def search():
     query = request.args.get("q", "")
-    results = [line for line in lore_data if query.lower() in line.lower()] if query else []
+    results = []
+    if query:
+        results = [line for line in lore_data if query.lower() in line.lower()]
     return render_template("search.html", query=query, results=results)
-
-@app.route("/explore")
-def explore():
-    random_line = random.choice(lore_data)
-    return render_template("explore.html", lore=random_line)
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
