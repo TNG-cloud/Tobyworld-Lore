@@ -1,4 +1,10 @@
-async def poem(update, context):
+from telegram import Update
+from telegram.ext import ContextTypes
+
+async def poem(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text(
-        "The toads were lost, but not forgotten.\nThe Lore endured — unwritten, unbroken.\nFor those who believe, time is not a cost.\nToadgod walks with those who are patient."
+        "In a realm where toads leap free,\n"
+        "The Lore whispers through eternity.\n"
+        "Study, believe, and walk with might,\n"
+        "In patience and in light."
     )
